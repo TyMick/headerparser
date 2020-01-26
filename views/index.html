@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- prettier-ignore -->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="shortcut icon" href="https://cdn.glitch.com/9593a6ff-8898-44c8-9540-633b69a016e5%2Ffavicon.ico?v=1579997631088" type="image/x-icon" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/default.min.css" />
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+
+    <title>Header parser microservice – Ty Mick</title>
+  </head>
+
+  <body style="background-color: #dee2e6;">
+    <div class="container-sm my-5">
+      <h1 class="mb-4">Header parser microservice</h1>
+
+      <!-- API test front end -->
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="mb-3">Test this API:</h5>
+
+          <form id="apiTest" class="form-inline mb-4">
+            <label class="sr-only" for="apiUrl">API URL</label>
+            <input
+              type="text"
+              id="apiUrl"
+              class="form-control mb-2 mr-sm-2"
+              value="https://ty-headerparser.glitch.me/api/whoami"
+              style="width: 23em;"
+              disabled
+            />
+
+            <button type="submit" class="btn btn-primary mb-2">GET</button>
+          </form>
+
+          <h5>API output:</h5>
+
+          <div class="card">
+            <pre id="apiOutput" class="hljs bg-white mb-0">&#8203;</pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Explanation -->
+      <p class="lead font-italic">
+        View the source on
+        <a href="https://github.com/tywmick/headerparser">GitHub</a>
+        or <a href="https://glitch.com/edit/#!/ty-headerparser">Glitch</a>.
+      </p>
+
+      <p>
+        I created this microservice in fulfillment of
+        <a href="https://freecodecamp.org">freeCodeCamp</a>'s APIs and
+        Microservices Project
+        <a
+          href="https://www.freecodecamp.org/learn/apis-and-microservices/apis-and-microservices-projects/request-header-parser-microservice"
+          >Request Header Parser Microservice</a
+        >, using <a href="https://nodejs.org/en/">Node.js</a> and
+        <a href="https://expressjs.com/">Express</a>. The above front end API
+        test also uses <a href="https://getbootstrap.com/">Bootstrap</a>,
+        <a href="https://jquery.com/">jQuery</a>, and
+        <a href="https://highlightjs.org/">highlight.js</a>. The API fulfills
+        the following user story:
+      </p>
+
+      <ol>
+        <li>
+          I can get the IP address, preferred languages (from header
+          <code>Accept-Language</code>) and system infos (from header
+          <code>User-Agent</code>) for my device.
+          <ul>
+            <li>
+              Example usage:
+              <ul>
+                <li><code>[base url]/api/whoami</code></li>
+              </ul>
+            </li>
+            <li>
+              Example output:
+              <ul>
+                <li>
+                  <samp
+                    >{"ipaddress": "::ffff:159.20.14.100", "language":
+                    "en-US,en;q=0.5", "software": "Mozilla/5.0 (X11; Ubuntu;
+                    Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0"}</samp
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+
+    <!-- Glitch button -->
+    <div
+      class="glitchButton"
+      style="position:absolute;top:20px;right:20px;"
+    ></div>
+    <script src="https://button.glitch.me/button.js"></script>
+
+    <!-- API test script -->
+    <script>
+      $("#apiTest").submit(function() {
+        event.preventDefault();
+        $.ajax({
+          url: "/api/whoami",
+          type: "get",
+          success: function(result) {
+            $("#apiOutput").text(JSON.stringify(result, null, 2));
+            hljs.highlightBlock(document.getElementById("apiOutput"));
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
