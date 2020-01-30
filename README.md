@@ -1,6 +1,6 @@
 # Header parser microservice
 
-I created this microservice in fulfillment of [freeCodeCamp](https://freecodecamp.org)'s APIs and Microservices Project [Request Header Parser Microservice](https://www.freecodecamp.org/learn/apis-and-microservices/apis-and-microservices-projects/request-header-parser-microservice), using [Node.js](https://nodejs.org/en/) and [Express](https://expressjs.com/). The above front end API test also uses [Bootstrap](https://getbootstrap.com/), [jQuery](https://jquery.com/), and [highlight.js](https://highlightjs.org/). The API fulfills the following user story:
+I created this app as a requirement for [my freeCodeCamp APIs and Microservices Certification](https://www.freecodecamp.org/certification/tywmick/apis-and-microservices), using [Node.js](https://nodejs.org/en/) and [Express](https://expressjs.com/). The above front end API test also uses [Bootstrap](https://getbootstrap.com/), [jQuery](https://jquery.com/), and [highlight.js](https://highlightjs.org/). The API fulfills the following user story:
 
 1.  I can get the IP address, preferred languages (from header `Accept-Language`) and system infos (from header `User-Agent`) for my device.
     - Example usage:
